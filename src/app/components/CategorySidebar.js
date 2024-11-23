@@ -148,7 +148,7 @@ function CategorySidebar({ initialData, onSubcategorySelect, onDuaSelect }) {
                             className="text-sm text-gray-600 p-2 hover:bg-green-50 rounded-lg cursor-pointer flex items-center gap-2"
                             onClick={(e) => {
                               e.stopPropagation();
-                              onDuaSelect(dua.id);
+                              onDuaSelect(dua.id, dua.dua_name_en);
                             }}
                           >
                             <Image src={icon} alt="Icon" width={20} height={20} />

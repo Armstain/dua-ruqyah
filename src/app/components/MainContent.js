@@ -44,7 +44,7 @@ export default function DuaCard({ selectedSubcategory, selectedSubcategoryName, 
       className="flex-1 bg-background rounded-2xl shadow-sm overflow-y-auto max-h-[calc(100vh-7rem)] mx-0 md:mx-4 font-inter"
     >
       <div className="text-lg md:text-xl bg-white p-4 font-semibold rounded-2xl mb-4">
-        <span className="text-green-600">Section:</span> 
+        <span className="text-green-600">Section: </span> 
         <span className="text-black-600">{selectedSubcategoryName}</span>
       </div>
       {filteredDuas.map((dua) => (

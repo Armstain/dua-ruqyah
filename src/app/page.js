@@ -11,6 +11,7 @@ const page = () => {
   const [selectedDua, setSelectedDua] = useState(null);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isCategoryOpen, setIsCategoryOpen] = useState(false);
+  const [selectedSubcategoryName, setSelectedSubcategoryName] = useState(null);
 
   return (
     <div className='flex flex-col md:flex-row w-full min-h-screen font-inter'>
@@ -25,15 +26,19 @@ const page = () => {
         <div className='flex flex-col md:flex-row flex-1 gap-4 p-4'>
           <div className={`${isCategoryOpen ? 'block' : 'hidden'} md:block`}>
             <CategorySidebar 
-              onSubcategorySelect={setSelectedSubcategory} 
+              onSubcategorySelect={(id, name) => {
+                setSelectedSubcategory(id);
+                setSelectedSubcategoryName(name);
+              }}
               onDuaSelect={setSelectedDua}
             />
           </div>
           <DuaCard 
-            className="flex-1"
-            selectedSubcategory={selectedSubcategory}
-            selectedDua={selectedDua} 
-          />
+  className="flex-1"
+  selectedSubcategory={selectedSubcategory}
+  selectedSubcategoryName={selectedSubcategoryName}
+              selectedDua={selectedDua} 
+            />
           <Settings className="w-[320px] hidden xl:block" />
         </div>
       </div>
