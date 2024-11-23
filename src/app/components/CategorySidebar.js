@@ -83,10 +83,9 @@ function CategorySidebar({ initialData, onSubcategorySelect, onDuaSelect }) {
   };
 
   return (
-    <div className="w-[320px] min-w-[320px] bg-white border-r border-gray-200 rounded-2xl font-inter">
+    <div className="w-full md:w-[320px] md:min-w-[320px] bg-white border-r border-gray-200 rounded-2xl font-inter">
       <div className="flex items-center bg-primary justify-center p-4 rounded-t-lg">
         <h1 className="text-xl font-semibold text-white">Categories</h1>
-       
       </div>
       
       <div className="relative mb-4 mt-4 mx-3">
@@ -99,8 +98,8 @@ function CategorySidebar({ initialData, onSubcategorySelect, onDuaSelect }) {
         />
         <IoSearchOutline className="absolute left-3 top-2.5 h-5 w-5 text-gray-400" />
       </div>
-
-      <div className="space-y-4 overflow-y-auto max-h-screen">
+      
+      <div className="space-y-4 overflow-y-auto max-h-[calc(100vh-200px)] md:max-h-screen">
         {processedCategories.map((category) => (
           <div 
             key={category.id} 

@@ -1,11 +1,10 @@
-'use client'
 import { IoBookmarkOutline, IoBulbOutline, IoCopyOutline, IoShareOutline } from "react-icons/io5";import { useState, useEffect, useRef } from 'react';
 import { FaPlayCircle } from "react-icons/fa";
 import Image from 'next/image';
 import icon from '../../../public/belief.svg';
 
-export default function DuaCard({ selectedSubcategory, selectedSubcategoryName, selectedDua }) {
-  const [filteredDuas, setFilteredDuas] = useState([]);
+export default function DuaCard({ selectedSubcategory, selectedSubcategoryName, selectedDua, initialDuas }) {
+  const [filteredDuas, setFilteredDuas] = useState(initialDuas || []);
   const contentRef = useRef(null);
 
   useEffect(() => {
@@ -42,21 +41,21 @@ export default function DuaCard({ selectedSubcategory, selectedSubcategoryName, 
   return (
     <div 
       ref={contentRef}
-      className="flex-1 bg-background rounded-2xl shadow-sm overflow-y-auto max-h-[calc(100vh-7rem)] mx-4 font-inter"
+      className="flex-1 bg-background rounded-2xl shadow-sm overflow-y-auto max-h-[calc(100vh-7rem)] mx-0 md:mx-4 font-inter"
     >
-      <div className="text-xl bg-white p-4 font-semibold rounded-2xl mb-4">
-        <span className="text-green-600">Section:</span> <span className="text-black-600">{selectedSubcategoryName}</span>
+      <div className="text-lg md:text-xl bg-white p-4 font-semibold rounded-2xl mb-4">
+        <span className="text-green-600">Section:</span> 
+        <span className="text-black-600">{selectedSubcategoryName}</span>
       </div>
       {filteredDuas.map((dua) => (
         <div key={dua.id} id={`dua-${dua.id}`} className="bg-white rounded-2xl p-4 shadow-sm mb-4">
           <div className="flex items-center gap-2">
-          <Image src={icon} alt="Icon"  width={30} height={30} />
-          <h2 className="text-xl font-semibold text-green-600">{dua.dua_id}.</h2>
-          <h2 className="text-xl font-semibold text-green-600">{dua.dua_name_en}</h2>
-
+            <Image src={icon} alt="Icon"  width={30} height={30} />
+            <h2 className="text-lg md:text-xl font-semibold text-green-600">{dua.dua_id}.</h2>
+            <h2 className="text-lg md:text-xl font-semibold text-green-600">{dua.dua_name_en}</h2>
           </div>
           
-          <div className=" text-2xl text-black rounded-lg my-10">
+          <div className="text-xl md:text-2xl text-black rounded-lg my-6 md:my-10">
             {dua.top_en}
           </div>
           <div className="arabic-text text-2xl text-blackrounded-lg mb-4">
