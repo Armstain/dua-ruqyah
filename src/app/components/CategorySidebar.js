@@ -37,7 +37,6 @@ function CategorySidebar({ initialData, onSubcategorySelect, onDuaSelect }) {
     fetchData();
   }, []);
 
-  // Process the data to create a hierarchical structure
   const processedCategories = categoriesData.categories.map(category => {
     const categorySubcategories = categoriesData.subCategories.filter(
       sub => sub.cat_id === category.id
@@ -141,7 +140,6 @@ function CategorySidebar({ initialData, onSubcategorySelect, onDuaSelect }) {
                       <span className="ml-4">{sub.subcat_name_en}</span>
                     </div>
                     
-                    {/* Show dua titles when this subcategory is selected */}
                     {selectedSubcategory === sub.id && duaTitles.length > 0 && (
                       <div className="ml-2 mt-2">
                         {duaTitles.map((dua) => (

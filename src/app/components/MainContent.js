@@ -13,7 +13,7 @@ export default function DuaCard({ selectedSubcategory, selectedSubcategoryName, 
         .then(response => response.json())
         .then(data => {
           if (!data.error) {
-            // Show all duas instead of filtering to just one
+           
             setFilteredDuas(data);
           } else {
             console.error(data.error);
