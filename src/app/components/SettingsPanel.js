@@ -2,7 +2,7 @@ import { IoLanguageOutline, IoMoonOutline, IoSettingsOutline, IoTextOutline,    
 
 export default function Settings() {
   return (
-    <div className="w-full bg-white border-l border-gray-200 p-6 m-4 rounded-lg">
+    <div className="w-[320px] min-w-[320px] bg-white border-l border-gray-200 p-6 rounded-2xl">
       <h2 className="text-xl font-semibold mb-6">Settings</h2>
       
       <div className="space-y-6">

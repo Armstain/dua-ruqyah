@@ -83,7 +83,7 @@ function CategorySidebar({ onSubcategorySelect, onDuaSelect }) {
   };
 
   return (
-    <div className="w-full bg-white border-r border-gray-200 m-4">
+    <div className="w-[320px] min-w-[320px] bg-white border-r border-gray-200 rounded-2xl">
       <div className="flex items-center bg-primary justify-center p-4 rounded-t-lg">
         <h1 className="text-xl font-semibold text-white">Categories</h1>
        
@@ -113,8 +113,11 @@ function CategorySidebar({ onSubcategorySelect, onDuaSelect }) {
             {/* <img src={category.cat_icon} alt={category.cat_name_en} width={30} height={30} /> */}
             
 
-              <h3 className="font-medium">{category.cat_name_en}</h3>
-              <span className="text-sm text-gray-500">{category.no_of_dua} Duas</span>
+              <h3 className="font-semibold">{category.cat_name_en}</h3>
+              <div className='flex flex-col items-center gap-2'>
+              <span className="text-sm text-gray-500">  Duas</span>
+              <span className="text-sm text-gray-500">{category.no_of_dua}</span>
+              </div>
             </div>
             <h3 className="text-sm text-gray-500"> Subcategories: {category.no_of_subcat}</h3>
             
@@ -141,7 +144,7 @@ function CategorySidebar({ onSubcategorySelect, onDuaSelect }) {
                     
                     {/* Show dua titles when this subcategory is selected */}
                     {selectedSubcategory === sub.id && duaTitles.length > 0 && (
-                      <div className="ml-8 mt-2 space-y-2">
+                      <div className="ml-2 mt-2">
                         {duaTitles.map((dua) => (
                           <div
                             key={dua.id}

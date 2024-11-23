@@ -1,6 +1,9 @@
 'use client'
 import { IoBookmarkOutline, IoBulbOutline, IoCopyOutline, IoShareOutline } from "react-icons/io5";import { useState, useEffect, useRef } from 'react';
 import { FaPlayCircle } from "react-icons/fa";
+import Image from 'next/image';
+import icon from '../../../public/belief.svg';
+
 export default function DuaCard({ selectedSubcategory, selectedDua }) {
   const [filteredDuas, setFilteredDuas] = useState([]);
   const contentRef = useRef(null);
@@ -39,16 +42,21 @@ export default function DuaCard({ selectedSubcategory, selectedDua }) {
   return (
     <div 
       ref={contentRef}
-      className="bg-white rounded-xl shadow-sm p-6 max-w-2xl m-4 overflow-y-auto max-h-[calc(100vh-2rem)]"
+      className="flex-1 bg-background rounded-2xl shadow-sm overflow-y-auto max-h-[calc(100vh-7rem)] mx-4"
     >
+      <div className="text-xl font-semibold text-green-600 mb-4">Section:{selectedSubcategory.subcat_name_en}</div>
       {filteredDuas.map((dua) => (
-        <div key={dua.id} id={`dua-${dua.id}`} className="mb-6">
+        <div key={dua.id} id={`dua-${dua.id}`} className="bg-white rounded-2xl p-4 shadow-sm mb-4">
+          <div className="flex items-center gap-2">
+          <Image src={icon} alt="Icon"  width={30} height={30} />
           <h2 className="text-xl font-semibold text-green-600">{dua.dua_name_en}</h2>
+
+          </div>
           
-          <div className=" text-2xl text-gray-800p-6 rounded-lg mb-4">
+          <div className=" text-2xl text-black rounded-lg mb-4">
             {dua.top_en}
           </div>
-          <div className="arabic-text text-2xl text-gray-800p-6 rounded-lg mb-4">
+          <div className="arabic-text text-2xl text-blackrounded-lg mb-4">
             {dua.dua_arabic} 
           </div>
           <div className="space-y-4">
