@@ -4,7 +4,7 @@ import { FaPlayCircle } from "react-icons/fa";
 import Image from 'next/image';
 import icon from '../../../public/belief.svg';
 
-export default function DuaCard({ selectedSubcategory, selectedDua }) {
+export default function DuaCard({ selectedSubcategory, selectedSubcategoryName, selectedDua }) {
   const [filteredDuas, setFilteredDuas] = useState([]);
   const contentRef = useRef(null);
 
@@ -42,18 +42,21 @@ export default function DuaCard({ selectedSubcategory, selectedDua }) {
   return (
     <div 
       ref={contentRef}
-      className="flex-1 bg-background rounded-2xl shadow-sm overflow-y-auto max-h-[calc(100vh-7rem)] mx-4"
+      className="flex-1 bg-background rounded-2xl shadow-sm overflow-y-auto max-h-[calc(100vh-7rem)] mx-4 font-inter"
     >
-      <div className="text-xl font-semibold text-green-600 mb-4">Section:{selectedSubcategory.subcat_name_en}</div>
+      <div className="text-xl bg-white p-4 font-semibold rounded-2xl mb-4">
+        <span className="text-green-600">Section:</span> <span className="text-black-600">{selectedSubcategoryName}</span>
+      </div>
       {filteredDuas.map((dua) => (
         <div key={dua.id} id={`dua-${dua.id}`} className="bg-white rounded-2xl p-4 shadow-sm mb-4">
           <div className="flex items-center gap-2">
           <Image src={icon} alt="Icon"  width={30} height={30} />
+          <h2 className="text-xl font-semibold text-green-600">{dua.dua_id}.</h2>
           <h2 className="text-xl font-semibold text-green-600">{dua.dua_name_en}</h2>
 
           </div>
           
-          <div className=" text-2xl text-black rounded-lg mb-4">
+          <div className=" text-2xl text-black rounded-lg my-10">
             {dua.top_en}
           </div>
           <div className="arabic-text text-2xl text-blackrounded-lg mb-4">
@@ -61,15 +64,15 @@ export default function DuaCard({ selectedSubcategory, selectedDua }) {
           </div>
           <div className="space-y-4">
             <div>
-              <h4 className="font-medium text-gray-700 mb-1">{dua.transliteration_en? "Transliteration:" : ""}</h4>
-              <p className="text-gray-600">{dua.transliteration_en}</p>
+              <h4 className="font-medium text-black mb-1">{dua.transliteration_en? "Transliteration:" : ""}</h4>
+              <p className="text-black italic">{dua.transliteration_en}</p>
             </div>
             <div>
-              <h4 className="font-medium text-gray-700 mb-1">{dua.translation_en? "Translation:" : ""}</h4>
+              <h4 className="font-medium text-black mb-1">{dua.translation_en? "Translation:" : ""}</h4>
               <p className="text-gray-600">{dua.translation_en}</p>
             </div>
             <div>
-              <h4 className=" text-gray-700 font-bold mb-1">{dua.bottom_en? "Bottom:" : ""}</h4>
+              <h4 className=" text-black font-bold mb-1">{dua.bottom_en? "" : ""}</h4>
               <p className="text-gray-600">{dua.bottom_en}</p>
             </div>
             <div>

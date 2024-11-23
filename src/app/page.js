@@ -11,7 +11,7 @@ const page = () => {
   const [selectedDua, setSelectedDua] = useState(null);
 
   return (
-    <div className='flex w-full min-h-screen'>
+    <div className='flex w-full min-h-screen font-inter'>
       <Sidebar />
       <div className='flex-1 flex flex-col'>
         <Header />

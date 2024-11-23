@@ -5,8 +5,8 @@ import { IoMenuOutline, IoSearchOutline } from "react-icons/io5";
 import icon from '../../../public/duaarrow.svg';
 
 
-function CategorySidebar({ onSubcategorySelect, onDuaSelect }) {
-  const [categoriesData, setCategoriesData] = useState({
+function CategorySidebar({ initialData, onSubcategorySelect, onDuaSelect }) {
+  const [categoriesData, setCategoriesData] = useState(initialData || {
     categories: [],
     subCategories: [],
     duas: []
@@ -67,9 +67,9 @@ function CategorySidebar({ onSubcategorySelect, onDuaSelect }) {
     setSelectedCategory(categoryId);
   };
 
-  const handleSubcategoryClick = async (subcategoryId) => {
+  const handleSubcategoryClick = async (subcategoryId, subcatName) => {
     setSelectedSubcategory(subcategoryId);
-    onSubcategorySelect(subcategoryId);
+    onSubcategorySelect(subcategoryId, subcatName);
     
     try {
       const response = await fetch(`/api/duas?subcategoryId=${subcategoryId}`);
@@ -83,7 +83,7 @@ function CategorySidebar({ onSubcategorySelect, onDuaSelect }) {
   };
 
   return (
-    <div className="w-[320px] min-w-[320px] bg-white border-r border-gray-200 rounded-2xl">
+    <div className="w-[320px] min-w-[320px] bg-white border-r border-gray-200 rounded-2xl font-inter">
       <div className="flex items-center bg-primary justify-center p-4 rounded-t-lg">
         <h1 className="text-xl font-semibold text-white">Categories</h1>
        
@@ -131,8 +131,8 @@ function CategorySidebar({ onSubcategorySelect, onDuaSelect }) {
                     <div
                       className="relative flex items-center text-sm p-2 rounded-lg hover:bg-green-50 cursor-pointer text-gray-600"
                       onClick={(e) => {
-                        e.stopPropagation(); // Stop event from bubbling up to parent
-                        handleSubcategoryClick(sub.id);
+                        e.stopPropagation();
+                        handleSubcategoryClick(sub.id, sub.subcat_name_en);
                       }}
                     >
                       {/* Bullet point */}
