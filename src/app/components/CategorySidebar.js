@@ -1,7 +1,7 @@
 'use client';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
-import { IoSearchOutline } from "react-icons/io5";
+import { IoMenuOutline, IoSearchOutline } from "react-icons/io5";
 import icon from '../../../public/duaarrow.svg';
 
 
@@ -83,10 +83,13 @@ function CategorySidebar({ onSubcategorySelect, onDuaSelect }) {
   };
 
   return (
-    <div className="w-80 bg-white border-r border-gray-200 p-4">
-      <h1 className="text-xl font-semibold mb-4">Categories</h1>
+    <div className="w-full bg-white border-r border-gray-200 m-4">
+      <div className="flex items-center bg-primary justify-center p-4 rounded-t-lg">
+        <h1 className="text-xl font-semibold text-white">Categories</h1>
+       
+      </div>
       
-      <div className="relative mb-4">
+      <div className="relative mb-4 mt-4 mx-3">
         <input
           type="text"
           placeholder="Search Categories"
@@ -97,7 +100,7 @@ function CategorySidebar({ onSubcategorySelect, onDuaSelect }) {
         <IoSearchOutline className="absolute left-3 top-2.5 h-5 w-5 text-gray-400" />
       </div>
 
-      <div className="space-y-4">
+      <div className="space-y-4 overflow-y-auto max-h-screen">
         {processedCategories.map((category) => (
           <div 
             key={category.id} 
